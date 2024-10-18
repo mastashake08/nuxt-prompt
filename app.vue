@@ -25,9 +25,8 @@ async function sendPrompt() {
 
     const session = await ai.assistant.create({
       monitor: (m) => {
-        console.log(m)
         m.addEventListener('downloadprogress', (e) => {
-          console.log(e)
+       
           downloadProgress.value = Math.round((e.loaded / e.total) * 100)
           if (downloadProgress.value === 100) {
             downloading.value = false
